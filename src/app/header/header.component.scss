@@ -1,0 +1,21 @@
+.heading {
+    background-color: rgba(211, 79, 79, 0.808);
+    border: 2px solid red;
+    display:relative;
+    height:  100px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 20px
+}
+
+.heading .para1 {
+    position: absolute;
+    top:20px;
+    left:550px;
+    line-height: 10px;
+}
+
+.movie-logo {
+    margin: 10px;
+    max-height: 90%;
+    max-width: 90%;
+ }
