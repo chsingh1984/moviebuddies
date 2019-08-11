@@ -1,3 +1,4 @@
+import { MovieResponse } from './MovieResponse';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -9,6 +10,7 @@ export class MoviedbserviceService {
 
   private API_KEY:string="8eeff62fec8e4e37548cfc9fd6f6969f";
   private API_URL="https://api.themoviedb.org/3/search/movie?api_key="+this.API_KEY;
+  private moviesResponse:MovieResponse;
   
   constructor(private httpClient:HttpClient) { 
 
@@ -18,5 +20,12 @@ export class MoviedbserviceService {
     return this.httpClient.get(this.API_URL+"&query="+keyword+"&language=en-US&page=1&include_adult=false");
   }
 
+  setMoviesResponse(response:MovieResponse) {
+    this.moviesResponse= response;
+  }
+
+  getMoviesResponse() {
+    return this.moviesResponse;
+  }
 
 }

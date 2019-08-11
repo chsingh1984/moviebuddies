@@ -1,5 +1,7 @@
 import { MoviedbserviceService } from './../services/moviedbservice.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,EventEmitter, Output } from '@angular/core';
+import { MovieResponse } from './../services/MovieResponse';
+import { Movie } from './../services/MovieResponse';
 
 @Component({
   selector: 'app-searchbar',
@@ -7,10 +9,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./searchbar.component.scss']
 })
 export class SearchbarComponent implements OnInit {
-
-  //@ViewChild('keyword') query;
-  private moviesList:any;
+  @Output()
+  searchResultsEmitter:EventEmitter<MovieResponse> = new EventEmitter<MovieResponse>();
   
+  
+  //@ViewChild('keyword') query;
+  private movieResponse:MovieResponse;
+  private moviesList:Array<Movie>;
   constructor(private moviedbService:MoviedbserviceService) { }
 
   ngOnInit() {
@@ -20,7 +25,7 @@ export class SearchbarComponent implements OnInit {
   fetchMovies(query) {
     console.log("fetching movies for:" + query);
     this.moviedbService.getMovies(query).subscribe(response=>{
-      this.moviesList = response;
+      this.searchResultsEmitter.emit(response);
       console.log("response recieved:" + response)
     }); 
   }

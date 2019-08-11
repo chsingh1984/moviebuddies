@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MovieResponse, Movie } from './services/MovieResponse';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'moviebuddies';
+  moviesList:Array<Movie>;
+
+  populateMovies(moviesResponse:MovieResponse) {
+    this.moviesList = moviesResponse.results;
+    console.log("app comoponent has moviesList:" + this.moviesList)
+  }
 }
