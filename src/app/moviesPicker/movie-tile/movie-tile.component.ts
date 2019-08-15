@@ -11,6 +11,10 @@ export class MovieTileComponent implements OnInit {
   @Input("movie")
   private movie:Movie;
 
+  selected = 0;
+  hovered = 0;
+  readonly = false;
+
   private POSTER_IMG_BASE_URL="https://image.tmdb.org/t/p/w200"
 
   constructor() { }

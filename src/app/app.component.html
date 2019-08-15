@@ -1,10 +1,10 @@
 <app-header></app-header>
 <app-searchbar (searchResultsEmitter)="populateMovies($event)"></app-searchbar>
 <!-- <app-movielist (moviesList)="moviesList"></app-movielist> -->
-
-<div *ngIf="moviesList">
+<div class="moviesList" *ngIf="moviesList">
     <ng-container *ngFor="let aMovie of moviesList">
         <app-movie-tile [movie]="aMovie"></app-movie-tile>
     </ng-container>
 </div>
+
 <router-outlet></router-outlet>

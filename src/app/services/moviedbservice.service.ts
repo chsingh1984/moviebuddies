@@ -20,12 +20,12 @@ export class MoviedbserviceService {
     return this.httpClient.get(this.API_URL+"&query="+keyword+"&language=en-US&page=1&include_adult=false");
   }
 
-  setMoviesResponse(response:MovieResponse) {
-    this.moviesResponse= response;
-  }
+  // setMoviesResponse(response:MovieResponse) {
+  //   this.moviesResponse= response;
+  // }
 
-  getMoviesResponse() {
-    return this.moviesResponse;
-  }
+  // getMoviesResponse() {
+  //   return this.moviesResponse;
+  // }
 
 }

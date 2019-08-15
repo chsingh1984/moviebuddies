@@ -16,6 +16,7 @@ export class SearchbarComponent implements OnInit {
   //@ViewChild('keyword') query;
   private movieResponse:MovieResponse;
   private moviesList:Array<Movie>;
+  private errorMsg: string;
   constructor(private moviedbService:MoviedbserviceService) { }
 
   ngOnInit() {
@@ -24,10 +25,14 @@ export class SearchbarComponent implements OnInit {
 
   fetchMovies(query) {
     console.log("fetching movies for:" + query);
-    this.moviedbService.getMovies(query).subscribe(response=>{
-      this.searchResultsEmitter.emit(response);
-      console.log("response recieved:" + response)
-    }); 
+    try {
+      this.moviedbService.getMovies(query).subscribe(response=>{
+        this.searchResultsEmitter.emit(response);
+        console.log("response recieved:" + response)
+      }); 
+    } catch(e) {
+      this.errorMsg="Server is busy,sorry for the inconvenience, please try again later.";
+    } 
   }
 
 }
