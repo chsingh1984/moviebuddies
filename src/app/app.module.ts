@@ -1,5 +1,5 @@
-import { StarRatingModule } from 'angular-star-rating';
 import { MoviedbserviceService } from './services/moviedbservice.service';
+import { UserDataService } from './services/userdata.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -12,6 +12,9 @@ import { MovielistComponent } from './moviesPicker/movielist/movielist.component
 import { HttpClientModule } from '@angular/common/http';
 import { RatingModule } from 'ng-starrating';
 import { FbloginComponent } from './fblogin/fblogin.component';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
 
 @NgModule({
   declarations: [
@@ -26,9 +29,11 @@ import { FbloginComponent } from './fblogin/fblogin.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RatingModule
+    RatingModule,
+    AngularFirestoreModule, 
+    AngularFireModule.initializeApp(environment.firebase,"moviebuddies")
   ],
-  providers: [MoviedbserviceService],
+  providers: [MoviedbserviceService,UserDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
